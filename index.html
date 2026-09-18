@@ -1,738 +1,1676 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Modern software engineer portfolio">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Sujal Shrestha — Software Engineer</title>
+
+  <meta
+    name="description"
+    content="Sujal Shrestha — Software Engineer building modern web applications, SaaS platforms and digital products."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #08090b;
+      color: #f5f7fa;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: #ffffff;
+      color: #08090b;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+
+      background: rgba(8,9,11,0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.7px;
+    }
+
+    .logo span {
+      color: #8b5cf6;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: #9298a3;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-button {
+      padding: 9px 16px;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #08090b !important;
+      font-weight: 700;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      max-width: 1180px;
+      margin: auto;
+
+      padding: 150px 24px 100px;
+
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 70px;
+
+      align-items: center;
+    }
+
+    .available {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 7px 12px;
+
+      border: 1px solid #24272d;
+      border-radius: 999px;
+
+      color: #a5abb5;
+      background: #0d0f12;
+
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+
+      font-size: clamp(50px, 7vw, 88px);
+      line-height: 0.98;
+
+      letter-spacing: -5px;
+
+      margin-bottom: 28px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #a78bfa,
+        #8b5cf6
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      font-size: 18px;
+      color: #969ca7;
+
+      line-height: 1.85;
+
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 13px 20px;
+
+      border-radius: 9px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: #ffffff;
+      color: #08090b;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      border: 1px solid #292d34;
+      color: #ffffff;
+    }
+
+    .button-secondary:hover {
+      background: #111318;
+    }
+
+    /* =========================
+       CODE CARD
+    ========================= */
+
+    .code-card {
+      border: 1px solid #252930;
+      border-radius: 16px;
+
+      background: #0e1014;
+
+      padding: 20px;
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.4);
+
+      transform: rotate(2deg);
+    }
+
+    .window-header {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .window-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #444851;
+    }
+
+    .code {
+      font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+      font-size: 13px;
+      line-height: 2;
+
+      color: #c8ccd4;
+    }
+
+    .purple {
+      color: #c084fc;
+    }
+
+    .green {
+      color: #86efac;
+    }
+
+    .blue {
+      color: #93c5fd;
+    }
+
+    .indent {
+      padding-left: 20px;
+    }
+
+    /* =========================
+       STACK
+    ========================= */
+
+    .stack {
+      border-top: 1px solid #1d2025;
+      border-bottom: 1px solid #1d2025;
+
+      background: #0c0e11;
+    }
+
+    .stack-container {
+      max-width: 1180px;
+      margin: auto;
+
+      padding: 22px 24px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      flex-wrap: wrap;
+
+      color: #656c77;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       COMMON SECTION
+    ========================= */
+
+    .section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 110px 24px;
+    }
+
+    .section-label {
+      color: #8b5cf6;
+
+      text-transform: uppercase;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 52px);
+
+      letter-spacing: -2.5px;
+
+      line-height: 1.1;
+
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      max-width: 680px;
+
+      color: #9298a3;
+
+      font-size: 17px;
+
+      line-height: 1.8;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .about-text p {
+      color: #9298a3;
+      font-size: 16px;
+      line-height: 1.9;
+
+      margin-bottom: 20px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      border: 1px solid #24272d;
+      background: #0d0f12;
+
+      border-radius: 12px;
+
+      padding: 25px;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      color: #747b86;
+      font-size: 13px;
+
+      margin-top: 4px;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .projects-section {
+      border-top: 1px solid #1d2025;
+      border-bottom: 1px solid #1d2025;
+
+      background: #0c0e11;
+    }
+
+    .projects-grid {
+      margin-top: 50px;
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+
+    .project {
+      border: 1px solid #24272d;
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      background: #0e1014;
+
+      transition: 0.25s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: #393e48;
+    }
+
+    .project-image {
+      height: 230px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at 30% 30%,
+          #312e81,
+          transparent 45%
+        ),
+        #111318;
+    }
+
+    .mock-dashboard {
+      width: 78%;
+      height: 68%;
+
+      border: 1px solid #363b45;
+
+      background: #08090b;
+
+      border-radius: 9px;
+
+      padding: 14px;
+
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .mock-line {
+      height: 7px;
+      width: 35%;
+
+      border-radius: 5px;
+
+      background: #8b5cf6;
+
+      margin-bottom: 15px;
+    }
+
+    .mock-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3,1fr);
+
+      gap: 8px;
+    }
+
+    .mock-box {
+      height: 70px;
+
+      border-radius: 6px;
+
+      background: #15181d;
+
+      border: 1px solid #1f2329;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-category {
+      color: #737a85;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: 22px;
+
+      margin-bottom: 9px;
+
+      letter-spacing: -0.7px;
+    }
+
+    .project-description {
+      color: #8d949f;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 7px;
+
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid #292d34;
+
+      padding: 4px 9px;
+
+      border-radius: 5px;
+
+      color: #9ca3af;
+
+      font-size: 11px;
+    }
+
+    .project-link {
+      display: inline-block;
+
+      margin-top: 20px;
+
+      color: #c4b5fd;
+
+      font-size: 13px;
+
+      font-weight: 700;
+    }
+
+    /* =========================
+       EXPERIENCE
+    ========================= */
+
+    .experience {
+      margin-top: 50px;
+
+      border-top: 1px solid #24272d;
+    }
+
+    .experience-item {
+      display: grid;
+
+      grid-template-columns: 180px 1fr;
+
+      gap: 40px;
+
+      padding: 30px 0;
+
+      border-bottom: 1px solid #24272d;
+    }
+
+    .experience-date {
+      color: #686f7a;
+      font-size: 13px;
+    }
+
+    .experience-role {
+      font-size: 20px;
+
+      margin-bottom: 4px;
+    }
+
+    .experience-company {
+      color: #a78bfa;
+
+      font-size: 14px;
+
+      margin-bottom: 10px;
+    }
+
+    .experience-description {
+      color: #858c97;
+
+      max-width: 700px;
+
+      font-size: 14px;
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 15px;
+
+      margin-top: 45px;
+    }
+
+    .skill-card {
+      border: 1px solid #24272d;
+
+      background: #0d0f12;
+
+      border-radius: 11px;
+
+      padding: 20px;
+    }
+
+    .skill-card h3 {
+      font-size: 15px;
+
+      margin-bottom: 7px;
+    }
+
+    .skill-card p {
+      color: #747b86;
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-section {
+      border-top: 1px solid #1d2025;
+
+      background: #0c0e11;
+    }
+
+    .contact {
+      max-width: 800px;
+
+      margin: auto;
+
+      text-align: center;
+
+      padding: 120px 24px;
+    }
+
+    .contact h2 {
+      font-size: clamp(42px, 6vw, 68px);
+
+      letter-spacing: -3px;
+
+      line-height: 1;
+
+      margin: 15px 0 25px;
+    }
+
+    .contact p {
+      color: #858c97;
+
+      font-size: 17px;
+
+      max-width: 580px;
+
+      margin: auto auto 30px;
+    }
+
+    .email {
+      display: inline-flex;
+
+      padding: 14px 22px;
+
+      background: #ffffff;
+
+      color: #08090b;
+
+      border-radius: 9px;
+
+      font-weight: 800;
+
+      font-size: 14px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid #1d2025;
+    }
+
+    .footer-container {
+      max-width: 1180px;
+
+      margin: auto;
+
+      padding: 25px 24px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      flex-wrap: wrap;
+    }
+
+    .copyright {
+      color: #626974;
+
+      font-size: 12px;
+    }
+
+    .socials {
+      display: flex;
+
+      gap: 20px;
+    }
+
+    .socials a {
+      color: #777e89;
+
+      font-size: 13px;
+
+      transition: 0.2s;
+    }
+
+    .socials a:hover {
+      color: #ffffff;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .nav-links a:not(.nav-button) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 130px;
+
+        gap: 50px;
+      }
+
+      .code-card {
+        max-width: 550px;
+
+        transform: none;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills {
+        grid-template-columns: 1fr 1fr;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 80px 20px;
+      }
+
+      .stack-container {
+        justify-content: flex-start;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .contact {
+        padding: 90px 20px;
+      }
+
+      .contact h2 {
+        letter-spacing: -2px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+    }
+  </style>
 </head>
 
-<body style="
-  margin:0;
-  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background:#0a0a0b;
-  color:#f5f5f5;
-  line-height:1.6;
-">
+<body>
 
-  <!-- NAVBAR -->
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-  <header style="
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:rgba(10,10,11,0.82);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid #202024;
-  ">
-    <nav style="
-      max-width:1120px;
-      margin:auto;
-      padding:18px 24px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    ">
+  <header class="navbar">
 
-```
-  <a href="#" style="
-    color:#fff;
-    text-decoration:none;
-    font-size:20px;
-    font-weight:800;
-    letter-spacing:-0.5px;
-  ">
-    Alex<span style="color:#8b5cf6;">.</span>
-  </a>
+    <nav class="nav-container">
 
-  <div style="
-    display:flex;
-    gap:28px;
-    align-items:center;
-  ">
-    <a href="#about" style="color:#a1a1aa;text-decoration:none;font-size:14px;">About</a>
-    <a href="#projects" style="color:#a1a1aa;text-decoration:none;font-size:14px;">Projects</a>
-    <a href="#experience" style="color:#a1a1aa;text-decoration:none;font-size:14px;">Experience</a>
-    <a href="#contact" style="
-      color:#fff;
-      text-decoration:none;
-      font-size:14px;
-      background:#fff;
-      color:#111;
-      padding:9px 16px;
-      border-radius:8px;
-      font-weight:600;
-    ">Let's Talk</a>
-  </div>
-</nav>
-```
+      <a href="#" class="logo">
+        Sujal<span>.</span>
+      </a>
+
+      <div class="nav-links">
+
+        <a href="#about">About</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#experience">Experience</a>
+
+        <a href="#skills">Skills</a>
+
+        <a href="#contact" class="nav-button">
+          Let's Talk
+        </a>
+
+      </div>
+
+    </nav>
 
   </header>
 
-  <!-- HERO -->
+
+  <!-- =========================
+       HERO
+  ========================== -->
 
   <main>
 
-```
-<section style="
-  max-width:1120px;
-  margin:auto;
-  padding:110px 24px 100px;
-  display:grid;
-  grid-template-columns:1.4fr 0.6fr;
-  gap:70px;
-  align-items:center;
-">
+    <section class="hero">
 
-  <div>
+      <div>
 
-    <div style="
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:6px 11px;
-      border:1px solid #27272a;
-      background:#111114;
-      border-radius:999px;
-      color:#a1a1aa;
-      font-size:13px;
-      margin-bottom:25px;
-    ">
-      <span style="
-        width:7px;
-        height:7px;
-        border-radius:50%;
-        background:#22c55e;
-        display:inline-block;
-      "></span>
-      Available for freelance work
-    </div>
+        <div class="available">
+          <span class="status-dot"></span>
+          Available for opportunities
+        </div>
 
-    <h1 style="
-      font-size:clamp(48px,7vw,82px);
-      line-height:0.98;
-      letter-spacing:-4px;
-      margin:0 0 28px;
-      max-width:850px;
-    ">
-      I build digital
-      <span style="color:#8b5cf6;">experiences</span>
-      that work.
-    </h1>
+        <h1>
+          Building
+          <span class="gradient-text">
+            software
+          </span>
+          that solves real problems.
+        </h1>
 
-    <p style="
-      max-width:620px;
-      color:#a1a1aa;
-      font-size:18px;
-      line-height:1.8;
-      margin-bottom:34px;
-    ">
-      I'm Alex, a software engineer focused on building fast,
-      scalable and thoughtful web applications. I turn complex
-      problems into simple digital products.
-    </p>
+        <p class="hero-description">
+          I'm Sujal Shrestha, a software engineer focused on building
+          modern web applications, scalable platforms and thoughtful
+          digital experiences.
+        </p>
 
-    <div style="
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    ">
-      <a href="#projects" style="
-        display:inline-block;
-        background:#8b5cf6;
-        color:#fff;
-        text-decoration:none;
-        padding:13px 21px;
-        border-radius:9px;
-        font-weight:700;
-        font-size:14px;
-      ">
-        View my work →
-      </a>
+        <div class="hero-buttons">
 
-      <a href="#contact" style="
-        display:inline-block;
-        border:1px solid #303035;
-        color:#fff;
-        text-decoration:none;
-        padding:13px 21px;
-        border-radius:9px;
-        font-weight:600;
-        font-size:14px;
-      ">
-        Get in touch
-      </a>
-    </div>
+          <a href="#projects" class="button button-primary">
+            View my work →
+          </a>
 
-  </div>
+          <a href="#contact" class="button button-secondary">
+            Get in touch
+          </a>
 
+        </div>
 
-  <!-- CODE CARD -->
-  <div style="
-    background:#111114;
-    border:1px solid #27272a;
-    border-radius:16px;
-    padding:20px;
-    box-shadow:0 25px 70px rgba(0,0,0,0.35);
-    transform:rotate(2deg);
-  ">
-
-    <div style="
-      display:flex;
-      gap:7px;
-      padding-bottom:18px;
-    ">
-      <span style="width:9px;height:9px;background:#ef4444;border-radius:50%;"></span>
-      <span style="width:9px;height:9px;background:#eab308;border-radius:50%;"></span>
-      <span style="width:9px;height:9px;background:#22c55e;border-radius:50%;"></span>
-    </div>
-
-    <div style="
-      font-family:'SFMono-Regular',Consolas,monospace;
-      font-size:13px;
-      line-height:2;
-      color:#d4d4d8;
-    ">
-      <div><span style="color:#c084fc;">const</span> developer = {</div>
-      <div style="padding-left:20px;">
-        name: <span style="color:#86efac;">"Alex Morgan"</span>,
       </div>
-      <div style="padding-left:20px;">
-        role: <span style="color:#86efac;">"Software Engineer"</span>,
+
+
+      <!-- CODE WINDOW -->
+
+      <div class="code-card">
+
+        <div class="window-header">
+
+          <span class="window-dot"></span>
+          <span class="window-dot"></span>
+          <span class="window-dot"></span>
+
+        </div>
+
+        <div class="code">
+
+          <div>
+            <span class="purple">const</span>
+            sujal =
+            <span class="blue">{</span>
+          </div>
+
+          <div class="indent">
+            name:
+            <span class="green">
+              "Sujal Shrestha"
+            </span>,
+          </div>
+
+          <div class="indent">
+            role:
+            <span class="green">
+              "Software Engineer"
+            </span>,
+          </div>
+
+          <div class="indent">
+            location:
+            <span class="green">
+              "Nepal"
+            </span>,
+          </div>
+
+          <div class="indent">
+            stack:
+            <span class="blue">[</span>
+          </div>
+
+          <div class="indent" style="padding-left:40px;">
+            <span class="green">
+              "Nuxt"
+            </span>,
+          </div>
+
+          <div class="indent" style="padding-left:40px;">
+            <span class="green">
+              "Vue"
+            </span>,
+          </div>
+
+          <div class="indent" style="padding-left:40px;">
+            <span class="green">
+              "Node.js"
+            </span>,
+          </div>
+
+          <div class="indent" style="padding-left:40px;">
+            <span class="green">
+              "TypeScript"
+            </span>
+          </div>
+
+          <div class="indent">
+            <span class="blue">]</span>
+          </div>
+
+          <div>
+            <span class="blue">}</span>;
+          </div>
+
+        </div>
+
       </div>
-      <div style="padding-left:20px;">
-        stack: [
+
+    </section>
+
+
+    <!-- =========================
+         TECH STACK
+    ========================== -->
+
+    <section class="stack">
+
+      <div class="stack-container">
+
+        <span>Vue / Nuxt</span>
+
+        <span>TypeScript</span>
+
+        <span>Node.js</span>
+
+        <span>Angular</span>
+
+        <span>React Native</span>
+
+        <span>Tailwind CSS</span>
+
+        <span>PostgreSQL</span>
+
       </div>
-      <div style="padding-left:40px;">
-        <span style="color:#86efac;">"TypeScript"</span>,
-      </div>
-      <div style="padding-left:40px;">
-        <span style="color:#86efac;">"Node.js"</span>,
-      </div>
-      <div style="padding-left:40px;">
-        <span style="color:#86efac;">"Vue"</span>
-      </div>
-      <div style="padding-left:20px;">]</div>
-      <div>};</div>
-    </div>
-  </div>
 
-</section>
+    </section>
 
 
-<!-- TECH STACK -->
-<section style="
-  border-top:1px solid #202024;
-  border-bottom:1px solid #202024;
-  background:#0d0d0f;
-">
-  <div style="
-    max-width:1120px;
-    margin:auto;
-    padding:24px;
-    display:flex;
-    justify-content:space-between;
-    gap:25px;
-    flex-wrap:wrap;
-    color:#71717a;
-    font-size:14px;
-  ">
-    <span>TypeScript</span>
-    <span>Vue / Nuxt</span>
-    <span>React</span>
-    <span>Node.js</span>
-    <span>PostgreSQL</span>
-    <span>AWS</span>
-  </div>
-</section>
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about" class="section">
+
+      <div class="about">
+
+        <div>
+
+          <div class="section-label">
+            About me
+          </div>
+
+          <h2 class="section-title">
+            Engineering with curiosity and purpose.
+          </h2>
+
+          <div class="about-text">
+
+            <p>
+              I enjoy turning ideas into useful products. My work
+              spans frontend engineering, backend systems, dashboards,
+              ecommerce platforms and learning products.
+            </p>
+
+            <p>
+              I care about clean architecture, performance,
+              responsive interfaces and creating experiences that
+              are simple for users while remaining maintainable
+              for developers.
+            </p>
+
+          </div>
+
+        </div>
 
 
-<!-- ABOUT -->
-<section id="about" style="
-  max-width:1120px;
-  margin:auto;
-  padding:100px 24px;
-">
+        <div class="about-stats">
 
-  <div style="max-width:700px;">
-
-    <p style="
-      color:#8b5cf6;
-      font-size:13px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:2px;
-    ">
-      About me
-    </p>
-
-    <h2 style="
-      font-size:42px;
-      letter-spacing:-2px;
-      margin:12px 0 20px;
-    ">
-      Engineering with purpose.
-    </h2>
-
-    <p style="color:#a1a1aa;font-size:17px;line-height:1.9;">
-      I enjoy working at the intersection of product, design and
-      engineering. My focus is creating software that is not only
-      technically solid, but also intuitive and enjoyable to use.
-    </p>
-
-    <p style="color:#a1a1aa;font-size:17px;line-height:1.9;">
-      Over the years I've worked on SaaS platforms, ecommerce
-      applications, dashboards and education products — from
-      early prototypes to production systems serving thousands
-      of users.
-    </p>
-
-  </div>
-</section>
-
-
-<!-- PROJECTS -->
-<section id="projects" style="
-  background:#0d0d0f;
-  border-top:1px solid #202024;
-  border-bottom:1px solid #202024;
-">
-
-  <div style="
-    max-width:1120px;
-    margin:auto;
-    padding:100px 24px;
-  ">
-
-    <p style="
-      color:#8b5cf6;
-      font-size:13px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:2px;
-    ">
-      Selected work
-    </p>
-
-    <h2 style="
-      font-size:42px;
-      letter-spacing:-2px;
-      margin:12px 0 45px;
-    ">
-      Things I've built.
-    </h2>
-
-
-    <div style="
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
-    ">
-
-      <!-- PROJECT 1 -->
-      <article style="
-        background:#111114;
-        border:1px solid #27272a;
-        border-radius:15px;
-        overflow:hidden;
-      ">
-
-        <div style="
-          height:230px;
-          background:linear-gradient(135deg,#18181b,#312e81);
-          display:flex;
-          align-items:center;
-          justify-content:center;
-        ">
-          <div style="
-            width:75%;
-            height:65%;
-            background:#09090b;
-            border:1px solid #3f3f46;
-            border-radius:9px;
-            padding:14px;
-          ">
-            <div style="
-              width:40%;
-              height:8px;
-              background:#8b5cf6;
-              border-radius:5px;
-              margin-bottom:20px;
-            "></div>
-
-            <div style="
-              display:grid;
-              grid-template-columns:repeat(3,1fr);
-              gap:8px;
-            ">
-              <div style="height:70px;background:#18181b;border-radius:6px;"></div>
-              <div style="height:70px;background:#18181b;border-radius:6px;"></div>
-              <div style="height:70px;background:#18181b;border-radius:6px;"></div>
+          <div class="stat">
+            <div class="stat-number">01</div>
+            <div class="stat-label">
+              Product mindset
             </div>
           </div>
-        </div>
 
-        <div style="padding:25px;">
-          <div style="color:#71717a;font-size:12px;margin-bottom:8px;">
-            SaaS PLATFORM
+          <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">
+              Curiosity
+            </div>
           </div>
 
-          <h3 style="margin:0 0 10px;font-size:22px;">
-            Analytics Dashboard
-          </h3>
-
-          <p style="color:#a1a1aa;margin:0 0 20px;">
-            A real-time analytics platform for monitoring business
-            performance and customer engagement.
-          </p>
-
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span style="border:1px solid #303035;padding:4px 9px;border-radius:5px;font-size:12px;">Vue</span>
-            <span style="border:1px solid #303035;padding:4px 9px;border-radius:5px;font-size:12px;">Node.js</span>
-            <span style="border:1px solid #303035;padding:4px 9px;border-radius:5px;font-size:12px;">PostgreSQL</span>
+          <div class="stat">
+            <div class="stat-number">Full</div>
+            <div class="stat-label">
+              Stack development
+            </div>
           </div>
+
+          <div class="stat">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">
+              Learning
+            </div>
+          </div>
+
         </div>
-      </article>
+
+      </div>
+
+    </section>
 
 
-      <!-- PROJECT 2 -->
-      <article style="
-        background:#111114;
-        border:1px solid #27272a;
-        border-radius:15px;
-        overflow:hidden;
-      ">
+    <!-- =========================
+         PROJECTS
+    ========================== -->
 
-        <div style="
-          height:230px;
-          background:linear-gradient(135deg,#18181b,#164e63);
-          display:flex;
-          align-items:center;
-          justify-content:center;
-        ">
+    <section id="projects" class="projects-section">
 
-          <div style="
-            width:75%;
-            background:#fafafa;
-            border-radius:9px;
-            padding:15px;
-          ">
+      <div class="section">
 
-            <div style="
-              width:35%;
-              height:8px;
-              background:#18181b;
-              border-radius:4px;
-              margin-bottom:18px;
-            "></div>
+        <div class="section-label">
+          Selected work
+        </div>
 
-            <div style="
-              display:flex;
-              gap:10px;
-            ">
-              <div style="width:35%;height:90px;background:#e4e4e7;border-radius:6px;"></div>
-              <div style="flex:1;">
-                <div style="height:8px;background:#d4d4d8;margin-bottom:9px;border-radius:4px;"></div>
-                <div style="height:8px;background:#e4e4e7;margin-bottom:9px;border-radius:4px;"></div>
-                <div style="height:28px;background:#18181b;border-radius:5px;margin-top:15px;"></div>
+        <h2 class="section-title">
+          Things I've built.
+        </h2>
+
+        <p class="section-description">
+          A selection of projects showcasing my experience across
+          education, ecommerce, SaaS and interactive applications.
+        </p>
+
+
+        <div class="projects-grid">
+
+
+          <!-- PROJECT 1 -->
+
+          <article class="project">
+
+            <div class="project-image">
+
+              <div class="mock-dashboard">
+
+                <div class="mock-line"></div>
+
+                <div class="mock-grid">
+
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+
+                </div>
+
               </div>
+
             </div>
 
-          </div>
+            <div class="project-content">
+
+              <div class="project-category">
+                EDUCATION PLATFORM
+              </div>
+
+              <h3 class="project-title">
+                Nepclex
+              </h3>
+
+              <p class="project-description">
+                A modern NCLEX preparation platform designed for
+                nursing students with courses, assessments,
+                progress tracking and interactive learning.
+              </p>
+
+              <div class="tags">
+
+                <span class="tag">Nuxt</span>
+                <span class="tag">Vue</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Video</span>
+
+              </div>
+
+              <a
+                href="https://nepclex.com"
+                target="_blank"
+                class="project-link"
+              >
+                View project →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 2 -->
+
+          <article class="project">
+
+            <div
+              class="project-image"
+              style="
+                background:
+                radial-gradient(
+                  circle at 70% 30%,
+                  #164e63,
+                  transparent 45%
+                ),
+                #111318;
+              "
+            >
+
+              <div class="mock-dashboard">
+
+                <div
+                  class="mock-line"
+                  style="background:#22d3ee;"
+                ></div>
+
+                <div class="mock-grid">
+
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="project-content">
+
+              <div class="project-category">
+                CAMPAIGN PLATFORM
+              </div>
+
+              <h3 class="project-title">
+                Campus Scan & Win
+              </h3>
+
+              <p class="project-description">
+                An interactive college campaign experience featuring
+                QR-based entry, registration and multiple browser
+                games including spin, scratch and memory challenges.
+              </p>
+
+              <div class="tags">
+
+                <span class="tag">Nuxt 4</span>
+                <span class="tag">Vue</span>
+                <span class="tag">Pinia</span>
+                <span class="tag">Tailwind</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 3 -->
+
+          <article class="project">
+
+            <div
+              class="project-image"
+              style="
+                background:
+                radial-gradient(
+                  circle at 30% 70%,
+                  #4c1d95,
+                  transparent 45%
+                ),
+                #111318;
+              "
+            >
+
+              <div class="mock-dashboard">
+
+                <div
+                  class="mock-line"
+                  style="background:#a78bfa;"
+                ></div>
+
+                <div class="mock-grid">
+
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="project-content">
+
+              <div class="project-category">
+                ECOMMERCE
+              </div>
+
+              <h3 class="project-title">
+                Ecommerce Admin Platform
+              </h3>
+
+              <p class="project-description">
+                A modern administration experience for managing
+                products, customers, orders and ecommerce operations
+                through a clean and responsive interface.
+              </p>
+
+              <div class="tags">
+
+                <span class="tag">Nuxt</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">API</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 4 -->
+
+          <article class="project">
+
+            <div
+              class="project-image"
+              style="
+                background:
+                radial-gradient(
+                  circle at 70% 70%,
+                  #14532d,
+                  transparent 45%
+                ),
+                #111318;
+              "
+            >
+
+              <div class="mock-dashboard">
+
+                <div
+                  class="mock-line"
+                  style="background:#4ade80;"
+                ></div>
+
+                <div class="mock-grid">
+
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="project-content">
+
+              <div class="project-category">
+                MOBILE APPLICATION
+              </div>
+
+              <h3 class="project-title">
+                Learning Mobile App
+              </h3>
+
+              <p class="project-description">
+                A cross-platform mobile learning experience with
+                authentication, persistent storage, API integration
+                and state management.
+              </p>
+
+              <div class="tags">
+
+                <span class="tag">React Native</span>
+                <span class="tag">Expo</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">MMKV</span>
+
+              </div>
+
+            </div>
+
+          </article>
+
         </div>
 
-        <div style="padding:25px;">
-          <div style="color:#71717a;font-size:12px;margin-bottom:8px;">
-            ECOMMERCE
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCE
+    ========================== -->
+
+    <section id="experience" class="section">
+
+      <div class="section-label">
+        Experience
+      </div>
+
+      <h2 class="section-title">
+        Building and learning.
+      </h2>
+
+      <div class="experience">
+
+
+        <div class="experience-item">
+
+          <div class="experience-date">
+            Software Engineering
           </div>
 
-          <h3 style="margin:0 0 10px;font-size:22px;">
-            Modern Commerce
-          </h3>
+          <div>
 
-          <p style="color:#a1a1aa;margin:0 0 20px;">
-            A high-performance ecommerce experience designed for
-            conversion and effortless product discovery.
+            <h3 class="experience-role">
+              Full-Stack Software Development
+            </h3>
+
+            <div class="experience-company">
+              Web Applications & SaaS
+            </div>
+
+            <p class="experience-description">
+              Building production-oriented applications across
+              frontend and backend systems, with a focus on
+              architecture, APIs, performance and user experience.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="experience-item">
+
+          <div class="experience-date">
+            Product Development
+          </div>
+
+          <div>
+
+            <h3 class="experience-role">
+              Education Technology
+            </h3>
+
+            <div class="experience-company">
+              Learning Platforms
+            </div>
+
+            <p class="experience-description">
+              Working on learning experiences involving courses,
+              assessments, video content, progress tracking,
+              dashboards and student-facing applications.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="experience-item">
+
+          <div class="experience-date">
+            Modern Frontend
+          </div>
+
+          <div>
+
+            <h3 class="experience-role">
+              Vue / Nuxt Engineering
+            </h3>
+
+            <div class="experience-company">
+              Modern Web Applications
+            </div>
+
+            <p class="experience-description">
+              Developing responsive interfaces with component-based
+              architecture, TypeScript, state management,
+              server-side rendering and API-driven applications.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills" class="section">
+
+      <div class="section-label">
+        Skills
+      </div>
+
+      <h2 class="section-title">
+        My toolbox.
+      </h2>
+
+      <div class="skills">
+
+        <div class="skill-card">
+
+          <h3>Frontend</h3>
+
+          <p>
+            Vue, Nuxt, React, Angular, TypeScript,
+            Tailwind CSS, responsive UI
           </p>
 
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <span style="border:1px solid #303035;padding:4px 9px;border-radius:5px;font-size:12px;">Nuxt</span>
-            <span style="border:1px solid #303035;padding:4px 9px;border-radius:5px;font-size:12px;">TypeScript</span>
-            <span style="border:1px solid #303035;padding:4px 9px;border-radius:5px;font-size:12px;">Stripe</span>
-          </div>
         </div>
 
-      </article>
+
+        <div class="skill-card">
+
+          <h3>Backend</h3>
+
+          <p>
+            Node.js, REST APIs, authentication,
+            API architecture and databases
+          </p>
+
+        </div>
 
 
-      <!-- PROJECT 3 -->
-      <article style="
-        background:#111114;
-        border:1px solid #27272a;
-        border-radius:15px;
-        padding:30px;
-      ">
+        <div class="skill-card">
 
-        <div style="font-size:30px;margin-bottom:20px;">◈</div>
+          <h3>Mobile</h3>
 
-        <h3 style="font-size:22px;margin:0 0 10px;">
-          Learning Platform
-        </h3>
+          <p>
+            React Native, Expo, navigation,
+            persistent storage and API integration
+          </p>
 
-        <p style="color:#a1a1aa;">
-          An online learning platform with courses, assessments,
-          progress tracking and interactive learning experiences.
+        </div>
+
+
+        <div class="skill-card">
+
+          <h3>Database</h3>
+
+          <p>
+            PostgreSQL, relational data,
+            queries and application data modeling
+          </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <h3>Architecture</h3>
+
+          <p>
+            SSR, caching, state management,
+            reusable components and scalable systems
+          </p>
+
+        </div>
+
+
+        <div class="skill-card">
+
+          <h3>Tools</h3>
+
+          <p>
+            Git, GitHub, VS Code, Figma,
+            Docker and modern development workflows
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact" class="contact-section">
+
+      <div class="contact">
+
+        <div class="section-label">
+          Contact
+        </div>
+
+        <h2>
+          Let's build something
+          <span class="gradient-text">
+            meaningful.
+          </span>
+        </h2>
+
+        <p>
+          Have an idea, project or opportunity?
+          I'd love to hear about it.
         </p>
 
-        <a href="#" style="
-          color:#c4b5fd;
-          text-decoration:none;
-          font-size:14px;
-          font-weight:600;
-        ">
-          View project →
+        <a
+          href="mailto:hello@sujalshrestha.com"
+          class="email"
+        >
+          hello@sujalshrestha.com →
         </a>
 
-      </article>
-
-
-      <!-- PROJECT 4 -->
-      <article style="
-        background:#111114;
-        border:1px solid #27272a;
-        border-radius:15px;
-        padding:30px;
-      ">
-
-        <div style="font-size:30px;margin-bottom:20px;">✦</div>
-
-        <h3 style="font-size:22px;margin:0 0 10px;">
-          Mobile Application
-        </h3>
-
-        <p style="color:#a1a1aa;">
-          A cross-platform mobile application focused on speed,
-          accessibility and a smooth user experience.
-        </p>
-
-        <a href="#" style="
-          color:#c4b5fd;
-          text-decoration:none;
-          font-size:14px;
-          font-weight:600;
-        ">
-          View project →
-        </a>
-
-      </article>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- EXPERIENCE -->
-<section id="experience" style="
-  max-width:1120px;
-  margin:auto;
-  padding:100px 24px;
-">
-
-  <p style="
-    color:#8b5cf6;
-    font-size:13px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:2px;
-  ">
-    Experience
-  </p>
-
-  <h2 style="
-    font-size:42px;
-    letter-spacing:-2px;
-    margin:12px 0 45px;
-  ">
-    Where I've worked.
-  </h2>
-
-  <div style="
-    border-top:1px solid #27272a;
-  ">
-
-    <div style="
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:35px;
-      padding:28px 0;
-      border-bottom:1px solid #27272a;
-    ">
-      <span style="color:#71717a;font-size:14px;">
-        2023 — Present
-      </span>
-
-      <div>
-        <h3 style="margin:0 0 5px;font-size:19px;">
-          Senior Software Engineer
-        </h3>
-        <div style="color:#8b5cf6;margin-bottom:10px;">
-          Tech Company
-        </div>
-        <p style="color:#a1a1aa;margin:0;">
-          Building scalable web applications, leading frontend
-          architecture and mentoring engineering teams.
-        </p>
       </div>
-    </div>
 
-
-    <div style="
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:35px;
-      padding:28px 0;
-      border-bottom:1px solid #27272a;
-    ">
-      <span style="color:#71717a;font-size:14px;">
-        2021 — 2023
-      </span>
-
-      <div>
-        <h3 style="margin:0 0 5px;font-size:19px;">
-          Full Stack Developer
-        </h3>
-        <div style="color:#8b5cf6;margin-bottom:10px;">
-          Digital Studio
-        </div>
-        <p style="color:#a1a1aa;margin:0;">
-          Developed SaaS products and ecommerce applications from
-          concept through production.
-        </p>
-      </div>
-    </div>
-
-
-    <div style="
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:35px;
-      padding:28px 0;
-      border-bottom:1px solid #27272a;
-    ">
-      <span style="color:#71717a;font-size:14px;">
-        2019 — 2021
-      </span>
-
-      <div>
-        <h3 style="margin:0 0 5px;font-size:19px;">
-          Frontend Developer
-        </h3>
-        <div style="color:#8b5cf6;margin-bottom:10px;">
-          Creative Agency
-        </div>
-        <p style="color:#a1a1aa;margin:0;">
-          Created responsive interfaces and interactive experiences
-          for startups and established brands.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact" style="
-  background:#111114;
-  border-top:1px solid #202024;
-">
-
-  <div style="
-    max-width:800px;
-    margin:auto;
-    padding:110px 24px;
-    text-align:center;
-  ">
-
-    <p style="
-      color:#8b5cf6;
-      font-size:13px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:2px;
-    ">
-      Contact
-    </p>
-
-    <h2 style="
-      font-size:clamp(40px,6vw,65px);
-      line-height:1;
-      letter-spacing:-3px;
-      margin:15px 0 22px;
-    ">
-      Have a project in mind?
-    </h2>
-
-    <p style="
-      color:#a1a1aa;
-      font-size:17px;
-      max-width:550px;
-      margin:0 auto 30px;
-    ">
-      I'm always interested in hearing about new projects,
-      ideas and opportunities.
-    </p>
-
-    <a href="mailto:hello@example.com" style="
-      display:inline-block;
-      background:#fff;
-      color:#111;
-      text-decoration:none;
-      padding:14px 24px;
-      border-radius:9px;
-      font-weight:700;
-    ">
-      hello@example.com →
-    </a>
-
-  </div>
-
-</section>
-```
+    </section>
 
   </main>
 
-  <!-- FOOTER -->
 
-  <footer style="
-    background:#0a0a0b;
-    border-top:1px solid #202024;
-  ">
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
-```
-<div style="
-  max-width:1120px;
-  margin:auto;
-  padding:25px 24px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  flex-wrap:wrap;
-">
+  <footer>
 
-  <span style="color:#71717a;font-size:13px;">
-    © 2026 Alex Morgan. Built with curiosity.
-  </span>
+    <div class="footer-container">
 
-  <div style="display:flex;gap:18px;">
-    <a href="#" style="color:#71717a;text-decoration:none;font-size:13px;">GitHub</a>
-    <a href="#" style="color:#71717a;text-decoration:none;font-size:13px;">LinkedIn</a>
-    <a href="#" style="color:#71717a;text-decoration:none;font-size:13px;">X</a>
-  </div>
+      <div class="copyright">
+        © 2026 Sujal Shrestha. Built with curiosity.
+      </div>
 
-</div>
+      <div class="socials">
+
+        <a
+          href="https://github.com/Sujal-Shrestha7"
+          target="_blank"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+        >
+          LinkedIn
+        </a>
+
+        <a href="#contact">
+          Email
+        </a>
+
+      </div>
+
+    </div>
 
   </footer>
 
