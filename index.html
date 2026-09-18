@@ -8,14 +8,18 @@
 
   <meta
     name="description"
-    content="Sujal Shrestha — Software Engineer building modern web applications, SaaS platforms and digital products."
+    content="Sujal Shrestha — Software Engineer building modern digital products, SaaS platforms and web applications."
   />
 
   <style>
+    /* =========================================================
+       RESET
+    ========================================================= */
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -23,18 +27,15 @@
     }
 
     body {
+      background: #0a0a0a;
+      color: #f4f1eb;
       font-family:
         Inter,
-        ui-sans-serif,
-        system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-
-      background: #08090b;
-      color: #f5f7fa;
-      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -42,1613 +43,1723 @@
       text-decoration: none;
     }
 
-    ::selection {
-      background: #ffffff;
-      color: #08090b;
+    button {
+      font: inherit;
     }
 
-    /* =========================
-       NAVBAR
-    ========================= */
+    ::selection {
+      background: #f4f1eb;
+      color: #0a0a0a;
+    }
 
-    .navbar {
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface-2: #151515;
+      --line: rgba(255, 255, 255, 0.1);
+      --muted: #858585;
+      --soft: #b6b3ad;
+      --white: #f4f1eb;
+      --accent: #c7a46a;
+      --max: 1280px;
+    }
+
+    /* =========================================================
+       CURSOR
+    ========================================================= */
+
+    .cursor {
+      position: fixed;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #fff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    nav {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
+      width: 100%;
       z-index: 1000;
 
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-
-      background: rgba(8,9,11,0.78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .nav-container {
-      max-width: 1180px;
-      margin: auto;
-      padding: 18px 24px;
+      padding: 28px 5vw;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      transition: 0.4s ease;
+    }
+
+    nav.scrolled {
+      padding: 18px 5vw;
+
+      background: rgba(10, 10, 10, 0.82);
+      backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid var(--line);
     }
 
     .logo {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.7px;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
     .logo span {
-      color: #8b5cf6;
+      color: var(--accent);
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
+      gap: 35px;
       align-items: center;
     }
 
     .nav-links a {
-      font-size: 14px;
-      color: #9298a3;
-      transition: 0.2s ease;
+      position: relative;
+
+      color: #aaa;
+      font-size: 12px;
+
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+
+      transition: 0.3s;
     }
 
     .nav-links a:hover {
-      color: #ffffff;
+      color: #fff;
     }
 
-    .nav-button {
-      padding: 9px 16px;
-      border-radius: 8px;
-      background: #ffffff;
-      color: #08090b !important;
-      font-weight: 700;
+    .nav-contact {
+      padding: 10px 16px;
+
+      border: 1px solid var(--line);
+      border-radius: 100px;
+
+      color: #fff !important;
     }
 
-    /* =========================
+    /* =========================================================
        HERO
-    ========================= */
+    ========================================================= */
 
     .hero {
       min-height: 100vh;
-      max-width: 1180px;
+
+      max-width: var(--max);
       margin: auto;
 
-      padding: 150px 24px 100px;
+      padding:
+        160px 5vw
+        100px;
 
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-      align-items: center;
+      position: relative;
     }
 
-    .available {
-      display: inline-flex;
+    .hero-eyebrow {
+      display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 12px;
 
-      padding: 7px 12px;
+      color: var(--muted);
 
-      border: 1px solid #24272d;
-      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
 
-      color: #a5abb5;
-      background: #0d0f12;
+      font-size: 11px;
 
-      font-size: 13px;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
+    .eyebrow-line {
+      width: 45px;
+      height: 1px;
+      background: var(--accent);
     }
 
     .hero h1 {
-      max-width: 850px;
+      max-width: 1100px;
 
-      font-size: clamp(50px, 7vw, 88px);
-      line-height: 0.98;
+      font-size: clamp(60px, 10vw, 145px);
 
-      letter-spacing: -5px;
+      line-height: 0.87;
 
-      margin-bottom: 28px;
+      letter-spacing: -7px;
+
+      font-weight: 500;
+
+      text-transform: uppercase;
     }
 
-    .gradient-text {
-      background: linear-gradient(
-        90deg,
-        #ffffff,
-        #a78bfa,
-        #8b5cf6
-      );
-
-      -webkit-background-clip: text;
-      background-clip: text;
+    .hero h1 .outline {
       color: transparent;
+
+      -webkit-text-stroke: 1px #777;
+
+      font-style: italic;
+    }
+
+    .hero-bottom {
+      margin-top: 70px;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 50px;
     }
 
     .hero-description {
-      max-width: 650px;
+      max-width: 460px;
 
-      font-size: 18px;
-      color: #969ca7;
+      color: #929292;
 
-      line-height: 1.85;
-
-      margin-bottom: 34px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 13px 20px;
-
-      border-radius: 9px;
-
-      font-size: 14px;
-      font-weight: 700;
-
-      transition: 0.2s ease;
-    }
-
-    .button-primary {
-      background: #ffffff;
-      color: #08090b;
-    }
-
-    .button-primary:hover {
-      transform: translateY(-2px);
-    }
-
-    .button-secondary {
-      border: 1px solid #292d34;
-      color: #ffffff;
-    }
-
-    .button-secondary:hover {
-      background: #111318;
-    }
-
-    /* =========================
-       CODE CARD
-    ========================= */
-
-    .code-card {
-      border: 1px solid #252930;
-      border-radius: 16px;
-
-      background: #0e1014;
-
-      padding: 20px;
-
-      box-shadow:
-        0 30px 80px rgba(0,0,0,0.4);
-
-      transform: rotate(2deg);
-    }
-
-    .window-header {
-      display: flex;
-      gap: 7px;
-      margin-bottom: 20px;
-    }
-
-    .window-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #444851;
-    }
-
-    .code {
-      font-family:
-        "SFMono-Regular",
-        Consolas,
-        "Liberation Mono",
-        monospace;
-
-      font-size: 13px;
-      line-height: 2;
-
-      color: #c8ccd4;
-    }
-
-    .purple {
-      color: #c084fc;
-    }
-
-    .green {
-      color: #86efac;
-    }
-
-    .blue {
-      color: #93c5fd;
-    }
-
-    .indent {
-      padding-left: 20px;
-    }
-
-    /* =========================
-       STACK
-    ========================= */
-
-    .stack {
-      border-top: 1px solid #1d2025;
-      border-bottom: 1px solid #1d2025;
-
-      background: #0c0e11;
-    }
-
-    .stack-container {
-      max-width: 1180px;
-      margin: auto;
-
-      padding: 22px 24px;
-
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-
-      flex-wrap: wrap;
-
-      color: #656c77;
-
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    /* =========================
-       COMMON SECTION
-    ========================= */
-
-    .section {
-      max-width: 1180px;
-      margin: auto;
-      padding: 110px 24px;
-    }
-
-    .section-label {
-      color: #8b5cf6;
-
-      text-transform: uppercase;
-
-      font-size: 12px;
-      font-weight: 800;
-
-      letter-spacing: 2px;
-
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(36px, 5vw, 52px);
-
-      letter-spacing: -2.5px;
-
-      line-height: 1.1;
-
-      margin-bottom: 20px;
-    }
-
-    .section-description {
-      max-width: 680px;
-
-      color: #9298a3;
-
-      font-size: 17px;
+      font-size: 16px;
 
       line-height: 1.8;
     }
 
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-
-      align-items: center;
+    .hero-description strong {
+      color: #ddd;
+      font-weight: 500;
     }
 
-    .about-text p {
-      color: #9298a3;
-      font-size: 16px;
+    .scroll-indicator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: #777;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .scroll-line {
+      width: 50px;
+      height: 1px;
+
+      background: #555;
+    }
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .intro {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro-inner {
+      max-width: var(--max);
+      margin: auto;
+
+      padding: 120px 5vw;
+
+      display: grid;
+
+      grid-template-columns: 0.35fr 1fr;
+
+      gap: 80px;
+    }
+
+    .section-number {
+      color: var(--accent);
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+    }
+
+    .intro-text {
+      max-width: 900px;
+    }
+
+    .intro-text p {
+      font-size: clamp(32px, 4vw, 58px);
+
+      line-height: 1.1;
+
+      letter-spacing: -2px;
+
+      color: #ddd;
+    }
+
+    .intro-text span {
+      color: #666;
+    }
+
+    /* =========================================================
+       WORK
+    ========================================================= */
+
+    .work {
+      max-width: var(--max);
+      margin: auto;
+
+      padding: 130px 5vw;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      margin-bottom: 70px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(48px, 7vw, 90px);
+
+      font-weight: 500;
+
+      line-height: 0.9;
+
+      letter-spacing: -5px;
+
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      max-width: 260px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.7;
+    }
+
+    /* PROJECT */
+
+    .project {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      min-height: 580px;
+
+      border-top: 1px solid var(--line);
+
+      padding: 35px 0;
+
+      gap: 60px;
+    }
+
+    .project:nth-child(even) {
+      direction: rtl;
+    }
+
+    .project:nth-child(even) .project-info {
+      direction: ltr;
+    }
+
+    .project:nth-child(even) .project-visual {
+      direction: ltr;
+    }
+
+    .project-info {
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      padding: 20px 0;
+    }
+
+    .project-meta {
+      display: flex;
+
+      justify-content: space-between;
+
+      color: #686868;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+    }
+
+    .project-title {
+      font-size: clamp(38px, 5vw, 68px);
+
+      font-weight: 400;
+
+      letter-spacing: -3px;
+
+      line-height: 0.95;
+
+      margin: 35px 0 20px;
+    }
+
+    .project-description {
+      max-width: 430px;
+
+      color: #858585;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+    .project-stack {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 30px;
+    }
+
+    .project-stack span {
+      padding: 7px 11px;
+
+      border: 1px solid #292929;
+
+      border-radius: 100px;
+
+      color: #888;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+    .project-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      width: fit-content;
+
+      margin-top: 35px;
+
+      color: #fff;
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+    }
+
+    .project-link span {
+      transition: 0.3s;
+    }
+
+    .project-link:hover span {
+      transform: translateX(7px);
+    }
+
+    /* PROJECT VISUAL */
+
+    .project-visual {
+      position: relative;
+
+      min-height: 500px;
+
+      overflow: hidden;
+
+      background: #121212;
+
+      border: 1px solid #222;
+    }
+
+    .visual-one {
+      background:
+        radial-gradient(
+          circle at 25% 20%,
+          #453a28,
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          #1b1b1b,
+          transparent 45%
+        ),
+        #0e0e0e;
+    }
+
+    .visual-two {
+      background:
+        radial-gradient(
+          circle at 75% 25%,
+          #27343a,
+          transparent 35%
+        ),
+        #0e0e0e;
+    }
+
+    .visual-three {
+      background:
+        radial-gradient(
+          circle at 30% 70%,
+          #352d40,
+          transparent 40%
+        ),
+        #0e0e0e;
+    }
+
+    .visual-four {
+      background:
+        radial-gradient(
+          circle at 70% 70%,
+          #3a3227,
+          transparent 40%
+        ),
+        #0e0e0e;
+    }
+
+    /* MOCK UI */
+
+    .mock-ui {
+      position: absolute;
+
+      width: 72%;
+      height: 70%;
+
+      top: 15%;
+      left: 14%;
+
+      background: #080808;
+
+      border: 1px solid #333;
+
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.7);
+
+      padding: 18px;
+    }
+
+    .mock-header {
+      display: flex;
+
+      justify-content: space-between;
+
+      border-bottom: 1px solid #222;
+
+      padding-bottom: 14px;
+
+      margin-bottom: 18px;
+    }
+
+    .mock-logo {
+      width: 55px;
+      height: 6px;
+
+      background: #ddd;
+    }
+
+    .mock-nav {
+      width: 100px;
+      height: 5px;
+
+      background: #333;
+    }
+
+    .mock-content {
+      display: grid;
+
+      grid-template-columns: 0.3fr 1fr;
+
+      height: calc(100% - 40px);
+
+      gap: 15px;
+    }
+
+    .mock-sidebar {
+      border-right: 1px solid #222;
+    }
+
+    .mock-sidebar div {
+      width: 65%;
+
+      height: 5px;
+
+      background: #292929;
+
+      margin: 14px 0;
+    }
+
+    .mock-main {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 10px;
+    }
+
+    .mock-card {
+      background: #141414;
+
+      border: 1px solid #222;
+    }
+
+    .mock-card.large {
+      grid-column: span 2;
+    }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .about {
+      background: #111;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-inner {
+      max-width: var(--max);
+      margin: auto;
+
+      padding: 130px 5vw;
+
+      display: grid;
+
+      grid-template-columns: 0.35fr 1fr;
+
+      gap: 80px;
+    }
+
+    .about-content h2 {
+      max-width: 850px;
+
+      font-size: clamp(38px, 5vw, 70px);
+
+      font-weight: 400;
+
+      line-height: 1.05;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 40px;
+    }
+
+    .about-content h2 em {
+      color: var(--accent);
+      font-family: Georgia, serif;
+    }
+
+    .about-content p {
+      max-width: 680px;
+
+      color: #858585;
+
+      font-size: 15px;
+
       line-height: 1.9;
 
       margin-bottom: 20px;
     }
 
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .stat {
-      border: 1px solid #24272d;
-      background: #0d0f12;
-
-      border-radius: 12px;
-
-      padding: 25px;
-    }
-
-    .stat-number {
-      font-size: 32px;
-      font-weight: 800;
-
-      letter-spacing: -1px;
-    }
-
-    .stat-label {
-      color: #747b86;
-      font-size: 13px;
-
-      margin-top: 4px;
-    }
-
-    /* =========================
-       PROJECTS
-    ========================= */
-
-    .projects-section {
-      border-top: 1px solid #1d2025;
-      border-bottom: 1px solid #1d2025;
-
-      background: #0c0e11;
-    }
-
-    .projects-grid {
-      margin-top: 50px;
-
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 20px;
-    }
-
-    .project {
-      border: 1px solid #24272d;
-
-      border-radius: 15px;
-
-      overflow: hidden;
-
-      background: #0e1014;
-
-      transition: 0.25s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-5px);
-      border-color: #393e48;
-    }
-
-    .project-image {
-      height: 230px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        radial-gradient(
-          circle at 30% 30%,
-          #312e81,
-          transparent 45%
-        ),
-        #111318;
-    }
-
-    .mock-dashboard {
-      width: 78%;
-      height: 68%;
-
-      border: 1px solid #363b45;
-
-      background: #08090b;
-
-      border-radius: 9px;
-
-      padding: 14px;
-
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    }
-
-    .mock-line {
-      height: 7px;
-      width: 35%;
-
-      border-radius: 5px;
-
-      background: #8b5cf6;
-
-      margin-bottom: 15px;
-    }
-
-    .mock-grid {
-      display: grid;
-
-      grid-template-columns: repeat(3,1fr);
-
-      gap: 8px;
-    }
-
-    .mock-box {
-      height: 70px;
-
-      border-radius: 6px;
-
-      background: #15181d;
-
-      border: 1px solid #1f2329;
-    }
-
-    .project-content {
-      padding: 25px;
-    }
-
-    .project-category {
-      color: #737a85;
-
-      font-size: 11px;
-      font-weight: 800;
-
-      letter-spacing: 1.5px;
-
-      margin-bottom: 8px;
-    }
-
-    .project-title {
-      font-size: 22px;
-
-      margin-bottom: 9px;
-
-      letter-spacing: -0.7px;
-    }
-
-    .project-description {
-      color: #8d949f;
-
-      font-size: 14px;
-
-      line-height: 1.7;
-
-      margin-bottom: 20px;
-    }
-
-    .tags {
-      display: flex;
-      gap: 7px;
-
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      border: 1px solid #292d34;
-
-      padding: 4px 9px;
-
-      border-radius: 5px;
-
-      color: #9ca3af;
-
-      font-size: 11px;
-    }
-
-    .project-link {
-      display: inline-block;
-
-      margin-top: 20px;
-
-      color: #c4b5fd;
-
-      font-size: 13px;
-
-      font-weight: 700;
-    }
-
-    /* =========================
-       EXPERIENCE
-    ========================= */
-
-    .experience {
-      margin-top: 50px;
-
-      border-top: 1px solid #24272d;
-    }
-
-    .experience-item {
-      display: grid;
-
-      grid-template-columns: 180px 1fr;
-
-      gap: 40px;
-
-      padding: 30px 0;
-
-      border-bottom: 1px solid #24272d;
-    }
-
-    .experience-date {
-      color: #686f7a;
-      font-size: 13px;
-    }
-
-    .experience-role {
-      font-size: 20px;
-
-      margin-bottom: 4px;
-    }
-
-    .experience-company {
-      color: #a78bfa;
-
-      font-size: 14px;
-
-      margin-bottom: 10px;
-    }
-
-    .experience-description {
-      color: #858c97;
-
-      max-width: 700px;
-
-      font-size: 14px;
-    }
-
-    /* =========================
+    /* =========================================================
        SKILLS
-    ========================= */
+    ========================================================= */
 
     .skills {
+      max-width: var(--max);
+      margin: auto;
+
+      padding: 130px 5vw;
+    }
+
+    .skills-list {
+      margin-top: 60px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .skill {
       display: grid;
 
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 0.35fr 1fr;
 
-      gap: 15px;
+      align-items: center;
 
-      margin-top: 45px;
+      padding: 25px 0;
+
+      border-bottom: 1px solid var(--line);
     }
 
-    .skill-card {
-      border: 1px solid #24272d;
+    .skill-number {
+      color: #555;
 
-      background: #0d0f12;
-
-      border-radius: 11px;
-
-      padding: 20px;
+      font-size: 11px;
     }
 
-    .skill-card h3 {
-      font-size: 15px;
+    .skill-name {
+      font-size: clamp(25px, 4vw, 48px);
 
-      margin-bottom: 7px;
+      font-weight: 400;
+
+      letter-spacing: -2px;
+
+      transition: 0.3s;
     }
 
-    .skill-card p {
-      color: #747b86;
+    .skill:hover .skill-name {
+      color: var(--accent);
 
-      font-size: 13px;
+      padding-left: 10px;
     }
 
-    /* =========================
+    /* =========================================================
        CONTACT
-    ========================= */
-
-    .contact-section {
-      border-top: 1px solid #1d2025;
-
-      background: #0c0e11;
-    }
+    ========================================================= */
 
     .contact {
-      max-width: 800px;
+      min-height: 80vh;
 
-      margin: auto;
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
 
       text-align: center;
 
-      padding: 120px 24px;
+      border-top: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at center,
+          #181818,
+          #090909 60%
+        );
+    }
+
+    .contact-inner {
+      padding: 100px 5vw;
+    }
+
+    .contact-label {
+      color: var(--accent);
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 30px;
     }
 
     .contact h2 {
-      font-size: clamp(42px, 6vw, 68px);
+      font-size: clamp(55px, 10vw, 135px);
 
-      letter-spacing: -3px;
+      font-weight: 400;
 
-      line-height: 1;
+      line-height: 0.85;
 
-      margin: 15px 0 25px;
+      letter-spacing: -7px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 50px;
     }
 
-    .contact p {
-      color: #858c97;
+    .contact h2 span {
+      color: transparent;
 
-      font-size: 17px;
+      -webkit-text-stroke: 1px #777;
 
-      max-width: 580px;
-
-      margin: auto auto 30px;
+      font-style: italic;
     }
 
-    .email {
+    .contact-email {
       display: inline-flex;
 
-      padding: 14px 22px;
+      padding: 16px 25px;
 
-      background: #ffffff;
+      border: 1px solid #333;
 
-      color: #08090b;
-
-      border-radius: 9px;
-
-      font-weight: 800;
-
-      font-size: 14px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      border-top: 1px solid #1d2025;
-    }
-
-    .footer-container {
-      max-width: 1180px;
-
-      margin: auto;
-
-      padding: 25px 24px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-      flex-wrap: wrap;
-    }
-
-    .copyright {
-      color: #626974;
-
-      font-size: 12px;
-    }
-
-    .socials {
-      display: flex;
-
-      gap: 20px;
-    }
-
-    .socials a {
-      color: #777e89;
+      border-radius: 100px;
 
       font-size: 13px;
 
-      transition: 0.2s;
+      letter-spacing: 1px;
+
+      transition: 0.3s;
     }
 
-    .socials a:hover {
-      color: #ffffff;
+    .contact-email:hover {
+      background: #fff;
+      color: #000;
     }
 
-    /* =========================
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: auto;
+
+      padding: 25px 5vw;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+    }
+
+    .footer-inner p {
+      color: #555;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-socials a {
+      color: #777;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+    /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+
+    .fade {
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+    }
+
+    .fade.visible {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+    /* =========================================================
        RESPONSIVE
-    ========================= */
+    ========================================================= */
 
-    @media (max-width: 850px) {
+    @media (max-width: 800px) {
 
-      .nav-links a:not(.nav-button) {
+      .cursor {
+        display: none;
+      }
+
+      nav {
+        padding: 20px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a:not(.nav-contact) {
         display: none;
       }
 
       .hero {
-        grid-template-columns: 1fr;
-
-        padding-top: 130px;
-
-        gap: 50px;
+        padding:
+          140px 20px
+          80px;
       }
-
-      .code-card {
-        max-width: 550px;
-
-        transform: none;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-
-        gap: 45px;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skills {
-        grid-template-columns: 1fr 1fr;
-      }
-
-    }
-
-    @media (max-width: 600px) {
 
       .hero h1 {
-        letter-spacing: -3px;
+        font-size: clamp(52px, 16vw, 100px);
+        letter-spacing: -4px;
       }
 
-      .hero-description {
-        font-size: 16px;
-      }
-
-      .section {
-        padding: 80px 20px;
-      }
-
-      .stack-container {
-        justify-content: flex-start;
-      }
-
-      .about-stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .experience-item {
-        grid-template-columns: 1fr;
-
-        gap: 8px;
-      }
-
-      .skills {
-        grid-template-columns: 1fr;
-      }
-
-      .contact {
-        padding: 90px 20px;
-      }
-
-      .contact h2 {
-        letter-spacing: -2px;
-      }
-
-      .footer-container {
+      .hero-bottom {
         flex-direction: column;
 
         align-items: flex-start;
+
+        margin-top: 50px;
       }
 
+      .intro-inner,
+      .about-inner {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding: 90px 20px;
+      }
+
+      .work,
+      .skills {
+        padding: 90px 20px;
+      }
+
+      .section-heading {
+        display: block;
+
+        margin-bottom: 50px;
+      }
+
+      .section-heading h2 {
+        margin-bottom: 25px;
+      }
+
+      .project,
+      .project:nth-child(even) {
+        grid-template-columns: 1fr;
+
+        direction: ltr;
+
+        gap: 30px;
+
+        min-height: auto;
+
+        padding: 30px 0 70px;
+      }
+
+      .project-visual {
+        min-height: 350px;
+
+        order: -1;
+      }
+
+      .mock-ui {
+        width: 82%;
+        left: 9%;
+      }
+
+      .skill {
+        grid-template-columns: 50px 1fr;
+      }
+
+      .contact {
+        min-height: 70vh;
+      }
+
+      .contact h2 {
+        letter-spacing: -4px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+
+        gap: 18px;
+
+        align-items: flex-start;
+      }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================
+  <!-- CUSTOM CURSOR -->
+
+  <div class="cursor"></div>
+
+
+  <!-- =====================================================
        NAVIGATION
-  ========================== -->
+  ====================================================== -->
 
-  <header class="navbar">
+  <nav id="navbar">
 
-    <nav class="nav-container">
+    <a href="#" class="logo">
+      SUJAL<span>.</span>
+    </a>
 
-      <a href="#" class="logo">
-        Sujal<span>.</span>
+    <div class="nav-links">
+
+      <a href="#work">
+        Work
       </a>
 
-      <div class="nav-links">
+      <a href="#about">
+        About
+      </a>
 
-        <a href="#about">About</a>
+      <a href="#skills">
+        Expertise
+      </a>
 
-        <a href="#projects">Projects</a>
+      <a href="#contact" class="nav-contact">
+        Contact
+      </a>
 
-        <a href="#experience">Experience</a>
+    </div>
 
-        <a href="#skills">Skills</a>
+  </nav>
 
-        <a href="#contact" class="nav-button">
-          Let's Talk
-        </a>
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <section class="hero">
+
+    <div class="hero-eyebrow fade">
+
+      <span class="eyebrow-line"></span>
+
+      Software Engineer · Nepal
+
+    </div>
+
+
+    <h1 class="fade">
+
+      SUJAL
+
+      <br>
+
+      <span class="outline">
+        SHRESTHA
+      </span>
+
+    </h1>
+
+
+    <div class="hero-bottom fade">
+
+      <p class="hero-description">
+
+        I design and engineer
+        <strong>digital products</strong>
+        for the web and beyond.
+
+        <br><br>
+
+        From ambitious ideas to production-ready
+        software — I care about the details,
+        the architecture and the experience.
+
+      </p>
+
+
+      <div class="scroll-indicator">
+
+        <span class="scroll-line"></span>
+
+        Scroll to explore
 
       </div>
 
-    </nav>
+    </div>
 
-  </header>
+  </section>
 
 
-  <!-- =========================
-       HERO
-  ========================== -->
+  <!-- =====================================================
+       INTRO
+  ====================================================== -->
 
-  <main>
+  <section class="intro">
 
-    <section class="hero">
+    <div class="intro-inner">
 
-      <div>
+      <div class="section-number">
+        01 / INTRO
+      </div>
 
-        <div class="available">
-          <span class="status-dot"></span>
-          Available for opportunities
-        </div>
+      <div class="intro-text fade">
 
-        <h1>
-          Building
-          <span class="gradient-text">
-            software
+        <p>
+
+          Software should feel
+
+          <span>
+            simple,
           </span>
-          that solves real problems.
-        </h1>
 
-        <p class="hero-description">
-          I'm Sujal Shrestha, a software engineer focused on building
-          modern web applications, scalable platforms and thoughtful
-          digital experiences.
+          even when the problem
+          behind it is
+
+          <span>
+            complex.
+          </span>
+
         </p>
 
-        <div class="hero-buttons">
-
-          <a href="#projects" class="button button-primary">
-            View my work →
-          </a>
-
-          <a href="#contact" class="button button-secondary">
-            Get in touch
-          </a>
-
-        </div>
-
       </div>
 
+    </div>
 
-      <!-- CODE WINDOW -->
-
-      <div class="code-card">
-
-        <div class="window-header">
-
-          <span class="window-dot"></span>
-          <span class="window-dot"></span>
-          <span class="window-dot"></span>
-
-        </div>
-
-        <div class="code">
-
-          <div>
-            <span class="purple">const</span>
-            sujal =
-            <span class="blue">{</span>
-          </div>
-
-          <div class="indent">
-            name:
-            <span class="green">
-              "Sujal Shrestha"
-            </span>,
-          </div>
-
-          <div class="indent">
-            role:
-            <span class="green">
-              "Software Engineer"
-            </span>,
-          </div>
-
-          <div class="indent">
-            location:
-            <span class="green">
-              "Nepal"
-            </span>,
-          </div>
-
-          <div class="indent">
-            stack:
-            <span class="blue">[</span>
-          </div>
-
-          <div class="indent" style="padding-left:40px;">
-            <span class="green">
-              "Nuxt"
-            </span>,
-          </div>
-
-          <div class="indent" style="padding-left:40px;">
-            <span class="green">
-              "Vue"
-            </span>,
-          </div>
-
-          <div class="indent" style="padding-left:40px;">
-            <span class="green">
-              "Node.js"
-            </span>,
-          </div>
-
-          <div class="indent" style="padding-left:40px;">
-            <span class="green">
-              "TypeScript"
-            </span>
-          </div>
-
-          <div class="indent">
-            <span class="blue">]</span>
-          </div>
-
-          <div>
-            <span class="blue">}</span>;
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
+  </section>
 
 
-    <!-- =========================
-         TECH STACK
-    ========================== -->
+  <!-- =====================================================
+       WORK
+  ====================================================== -->
 
-    <section class="stack">
+  <section id="work" class="work">
 
-      <div class="stack-container">
+    <div class="section-heading">
 
-        <span>Vue / Nuxt</span>
+      <h2>
+        Selected<br>
+        Work
+      </h2>
 
-        <span>TypeScript</span>
+      <p>
+        A collection of products and platforms
+        I've worked on across education,
+        ecommerce, campaigns and mobile.
+      </p>
 
-        <span>Node.js</span>
-
-        <span>Angular</span>
-
-        <span>React Native</span>
-
-        <span>Tailwind CSS</span>
-
-        <span>PostgreSQL</span>
-
-      </div>
-
-    </section>
+    </div>
 
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+    <!-- PROJECT 01 -->
 
-    <section id="about" class="section">
+    <article class="project fade">
 
-      <div class="about">
+      <div class="project-info">
 
         <div>
 
-          <div class="section-label">
-            About me
-          </div>
+          <div class="project-meta">
 
-          <h2 class="section-title">
-            Engineering with curiosity and purpose.
-          </h2>
+            <span>
+              01 — Education
+            </span>
 
-          <div class="about-text">
-
-            <p>
-              I enjoy turning ideas into useful products. My work
-              spans frontend engineering, backend systems, dashboards,
-              ecommerce platforms and learning products.
-            </p>
-
-            <p>
-              I care about clean architecture, performance,
-              responsive interfaces and creating experiences that
-              are simple for users while remaining maintainable
-              for developers.
-            </p>
+            <span>
+              2026
+            </span>
 
           </div>
 
-        </div>
 
+          <h3 class="project-title">
+            NEPCLEX
+          </h3>
 
-        <div class="about-stats">
 
-          <div class="stat">
-            <div class="stat-number">01</div>
-            <div class="stat-label">
-              Product mindset
-            </div>
-          </div>
+          <p class="project-description">
 
-          <div class="stat">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">
-              Curiosity
-            </div>
-          </div>
+            A digital learning platform built for
+            NCLEX preparation. Designed around
+            courses, assessments, video learning,
+            progress tracking and student engagement.
 
-          <div class="stat">
-            <div class="stat-number">Full</div>
-            <div class="stat-label">
-              Stack development
-            </div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">
-              Learning
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         PROJECTS
-    ========================== -->
-
-    <section id="projects" class="projects-section">
-
-      <div class="section">
-
-        <div class="section-label">
-          Selected work
-        </div>
-
-        <h2 class="section-title">
-          Things I've built.
-        </h2>
-
-        <p class="section-description">
-          A selection of projects showcasing my experience across
-          education, ecommerce, SaaS and interactive applications.
-        </p>
-
-
-        <div class="projects-grid">
-
-
-          <!-- PROJECT 1 -->
-
-          <article class="project">
-
-            <div class="project-image">
-
-              <div class="mock-dashboard">
-
-                <div class="mock-line"></div>
-
-                <div class="mock-grid">
-
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="project-content">
-
-              <div class="project-category">
-                EDUCATION PLATFORM
-              </div>
-
-              <h3 class="project-title">
-                Nepclex
-              </h3>
-
-              <p class="project-description">
-                A modern NCLEX preparation platform designed for
-                nursing students with courses, assessments,
-                progress tracking and interactive learning.
-              </p>
-
-              <div class="tags">
-
-                <span class="tag">Nuxt</span>
-                <span class="tag">Vue</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">Video</span>
-
-              </div>
-
-              <a
-                href="https://nepclex.com"
-                target="_blank"
-                class="project-link"
-              >
-                View project →
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 2 -->
-
-          <article class="project">
-
-            <div
-              class="project-image"
-              style="
-                background:
-                radial-gradient(
-                  circle at 70% 30%,
-                  #164e63,
-                  transparent 45%
-                ),
-                #111318;
-              "
-            >
-
-              <div class="mock-dashboard">
-
-                <div
-                  class="mock-line"
-                  style="background:#22d3ee;"
-                ></div>
-
-                <div class="mock-grid">
-
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="project-content">
-
-              <div class="project-category">
-                CAMPAIGN PLATFORM
-              </div>
-
-              <h3 class="project-title">
-                Campus Scan & Win
-              </h3>
-
-              <p class="project-description">
-                An interactive college campaign experience featuring
-                QR-based entry, registration and multiple browser
-                games including spin, scratch and memory challenges.
-              </p>
-
-              <div class="tags">
-
-                <span class="tag">Nuxt 4</span>
-                <span class="tag">Vue</span>
-                <span class="tag">Pinia</span>
-                <span class="tag">Tailwind</span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 3 -->
-
-          <article class="project">
-
-            <div
-              class="project-image"
-              style="
-                background:
-                radial-gradient(
-                  circle at 30% 70%,
-                  #4c1d95,
-                  transparent 45%
-                ),
-                #111318;
-              "
-            >
-
-              <div class="mock-dashboard">
-
-                <div
-                  class="mock-line"
-                  style="background:#a78bfa;"
-                ></div>
-
-                <div class="mock-grid">
-
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="project-content">
-
-              <div class="project-category">
-                ECOMMERCE
-              </div>
-
-              <h3 class="project-title">
-                Ecommerce Admin Platform
-              </h3>
-
-              <p class="project-description">
-                A modern administration experience for managing
-                products, customers, orders and ecommerce operations
-                through a clean and responsive interface.
-              </p>
-
-              <div class="tags">
-
-                <span class="tag">Nuxt</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Tailwind</span>
-                <span class="tag">API</span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PROJECT 4 -->
-
-          <article class="project">
-
-            <div
-              class="project-image"
-              style="
-                background:
-                radial-gradient(
-                  circle at 70% 70%,
-                  #14532d,
-                  transparent 45%
-                ),
-                #111318;
-              "
-            >
-
-              <div class="mock-dashboard">
-
-                <div
-                  class="mock-line"
-                  style="background:#4ade80;"
-                ></div>
-
-                <div class="mock-grid">
-
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-                  <div class="mock-box"></div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="project-content">
-
-              <div class="project-category">
-                MOBILE APPLICATION
-              </div>
-
-              <h3 class="project-title">
-                Learning Mobile App
-              </h3>
-
-              <p class="project-description">
-                A cross-platform mobile learning experience with
-                authentication, persistent storage, API integration
-                and state management.
-              </p>
-
-              <div class="tags">
-
-                <span class="tag">React Native</span>
-                <span class="tag">Expo</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">MMKV</span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         EXPERIENCE
-    ========================== -->
-
-    <section id="experience" class="section">
-
-      <div class="section-label">
-        Experience
-      </div>
-
-      <h2 class="section-title">
-        Building and learning.
-      </h2>
-
-      <div class="experience">
-
-
-        <div class="experience-item">
-
-          <div class="experience-date">
-            Software Engineering
-          </div>
-
-          <div>
-
-            <h3 class="experience-role">
-              Full-Stack Software Development
-            </h3>
-
-            <div class="experience-company">
-              Web Applications & SaaS
-            </div>
-
-            <p class="experience-description">
-              Building production-oriented applications across
-              frontend and backend systems, with a focus on
-              architecture, APIs, performance and user experience.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="experience-date">
-            Product Development
-          </div>
-
-          <div>
-
-            <h3 class="experience-role">
-              Education Technology
-            </h3>
-
-            <div class="experience-company">
-              Learning Platforms
-            </div>
-
-            <p class="experience-description">
-              Working on learning experiences involving courses,
-              assessments, video content, progress tracking,
-              dashboards and student-facing applications.
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="experience-date">
-            Modern Frontend
-          </div>
-
-          <div>
-
-            <h3 class="experience-role">
-              Vue / Nuxt Engineering
-            </h3>
-
-            <div class="experience-company">
-              Modern Web Applications
-            </div>
-
-            <p class="experience-description">
-              Developing responsive interfaces with component-based
-              architecture, TypeScript, state management,
-              server-side rendering and API-driven applications.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         SKILLS
-    ========================== -->
-
-    <section id="skills" class="section">
-
-      <div class="section-label">
-        Skills
-      </div>
-
-      <h2 class="section-title">
-        My toolbox.
-      </h2>
-
-      <div class="skills">
-
-        <div class="skill-card">
-
-          <h3>Frontend</h3>
-
-          <p>
-            Vue, Nuxt, React, Angular, TypeScript,
-            Tailwind CSS, responsive UI
           </p>
 
-        </div>
 
+          <div class="project-stack">
 
-        <div class="skill-card">
+            <span>Nuxt</span>
+            <span>Vue</span>
+            <span>Node.js</span>
+            <span>TypeScript</span>
 
-          <h3>Backend</h3>
-
-          <p>
-            Node.js, REST APIs, authentication,
-            API architecture and databases
-          </p>
+          </div>
 
         </div>
 
-
-        <div class="skill-card">
-
-          <h3>Mobile</h3>
-
-          <p>
-            React Native, Expo, navigation,
-            persistent storage and API integration
-          </p>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <h3>Database</h3>
-
-          <p>
-            PostgreSQL, relational data,
-            queries and application data modeling
-          </p>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <h3>Architecture</h3>
-
-          <p>
-            SSR, caching, state management,
-            reusable components and scalable systems
-          </p>
-
-        </div>
-
-
-        <div class="skill-card">
-
-          <h3>Tools</h3>
-
-          <p>
-            Git, GitHub, VS Code, Figma,
-            Docker and modern development workflows
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section id="contact" class="contact-section">
-
-      <div class="contact">
-
-        <div class="section-label">
-          Contact
-        </div>
-
-        <h2>
-          Let's build something
-          <span class="gradient-text">
-            meaningful.
-          </span>
-        </h2>
-
-        <p>
-          Have an idea, project or opportunity?
-          I'd love to hear about it.
-        </p>
 
         <a
-          href="mailto:hello@sujalshrestha.com"
-          class="email"
+          href="https://nepclex.com"
+          target="_blank"
+          class="project-link"
         >
-          hello@sujalshrestha.com →
+
+          Explore project
+
+          <span>→</span>
+
         </a>
 
       </div>
 
-    </section>
 
-  </main>
+      <div class="project-visual visual-one">
+
+        <div class="mock-ui">
+
+          <div class="mock-header">
+
+            <div class="mock-logo"></div>
+
+            <div class="mock-nav"></div>
+
+          </div>
 
 
-  <!-- =========================
+          <div class="mock-content">
+
+            <div class="mock-sidebar">
+
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+
+            <div class="mock-main">
+
+              <div class="mock-card large"></div>
+
+              <div class="mock-card"></div>
+
+              <div class="mock-card"></div>
+
+              <div class="mock-card"></div>
+
+              <div class="mock-card"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- PROJECT 02 -->
+
+    <article class="project fade">
+
+      <div class="project-info">
+
+        <div>
+
+          <div class="project-meta">
+
+            <span>
+              02 — Interactive
+            </span>
+
+            <span>
+              2026
+            </span>
+
+          </div>
+
+
+          <h3 class="project-title">
+            CAMPUS<br>
+            SCAN & WIN
+          </h3>
+
+
+          <p class="project-description">
+
+            An interactive campaign platform
+            combining QR-based entry, registration
+            and browser games into one engaging
+            college experience.
+
+          </p>
+
+
+          <div class="project-stack">
+
+            <span>Nuxt 4</span>
+            <span>Vue</span>
+            <span>Pinia</span>
+            <span>Tailwind</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-visual visual-two">
+
+        <div class="mock-ui">
+
+          <div class="mock-header">
+
+            <div class="mock-logo"></div>
+
+            <div class="mock-nav"></div>
+
+          </div>
+
+
+          <div class="mock-content">
+
+            <div class="mock-sidebar">
+
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+
+            <div class="mock-main">
+
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+              <div class="mock-card large"></div>
+              <div class="mock-card"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- PROJECT 03 -->
+
+    <article class="project fade">
+
+      <div class="project-info">
+
+        <div>
+
+          <div class="project-meta">
+
+            <span>
+              03 — Commerce
+            </span>
+
+            <span>
+              Product
+            </span>
+
+          </div>
+
+
+          <h3 class="project-title">
+            DIGITAL<br>
+            COMMERCE
+          </h3>
+
+
+          <p class="project-description">
+
+            A modern ecommerce ecosystem with
+            administration tools, product management,
+            customer workflows and a responsive
+            shopping experience.
+
+          </p>
+
+
+          <div class="project-stack">
+
+            <span>Nuxt</span>
+            <span>Vue</span>
+            <span>TypeScript</span>
+            <span>API</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-visual visual-three">
+
+        <div class="mock-ui">
+
+          <div class="mock-header">
+
+            <div class="mock-logo"></div>
+
+            <div class="mock-nav"></div>
+
+          </div>
+
+
+          <div class="mock-content">
+
+            <div class="mock-sidebar">
+
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+
+            <div class="mock-main">
+
+              <div class="mock-card large"></div>
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- PROJECT 04 -->
+
+    <article class="project fade">
+
+      <div class="project-info">
+
+        <div>
+
+          <div class="project-meta">
+
+            <span>
+              04 — Mobile
+            </span>
+
+            <span>
+              React Native
+            </span>
+
+          </div>
+
+
+          <h3 class="project-title">
+            MOBILE<br>
+            EXPERIENCE
+          </h3>
+
+
+          <p class="project-description">
+
+            Cross-platform mobile applications
+            connecting intuitive interfaces with
+            reliable APIs, persistent storage and
+            scalable application architecture.
+
+          </p>
+
+
+          <div class="project-stack">
+
+            <span>React Native</span>
+            <span>Expo</span>
+            <span>TypeScript</span>
+            <span>MMKV</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="project-visual visual-four">
+
+        <div class="mock-ui">
+
+          <div class="mock-header">
+
+            <div class="mock-logo"></div>
+
+            <div class="mock-nav"></div>
+
+          </div>
+
+
+          <div class="mock-content">
+
+            <div class="mock-sidebar">
+
+              <div></div>
+              <div></div>
+              <div></div>
+
+            </div>
+
+
+            <div class="mock-main">
+
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+              <div class="mock-card large"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- =====================================================
+       ABOUT
+  ====================================================== -->
+
+  <section id="about" class="about">
+
+    <div class="about-inner">
+
+      <div class="section-number">
+        02 / ABOUT
+      </div>
+
+
+      <div class="about-content fade">
+
+        <h2>
+
+          More than writing code.
+          I build <em>products.</em>
+
+        </h2>
+
+
+        <p>
+
+          I'm Sujal Shrestha, a software engineer
+          interested in the space between technology,
+          product and design.
+
+        </p>
+
+
+        <p>
+
+          I work across the stack — from crafting
+          interfaces with Vue and Nuxt to designing
+          APIs, application architecture and mobile
+          experiences.
+
+        </p>
+
+
+        <p>
+
+          My approach is simple:
+          understand the problem first,
+          then build the right solution.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       SKILLS
+  ====================================================== -->
+
+  <section id="skills" class="skills">
+
+    <div class="section-heading">
+
+      <h2>
+        Expertise
+      </h2>
+
+      <p>
+        Technologies are tools.
+        The real skill is knowing
+        how and when to use them.
+      </p>
+
+    </div>
+
+
+    <div class="skills-list">
+
+      <div class="skill fade">
+
+        <span class="skill-number">
+          01
+        </span>
+
+        <span class="skill-name">
+          Frontend Engineering
+        </span>
+
+      </div>
+
+
+      <div class="skill fade">
+
+        <span class="skill-number">
+          02
+        </span>
+
+        <span class="skill-name">
+          Full-Stack Development
+        </span>
+
+      </div>
+
+
+      <div class="skill fade">
+
+        <span class="skill-number">
+          03
+        </span>
+
+        <span class="skill-name">
+          SaaS & Product Development
+        </span>
+
+      </div>
+
+
+      <div class="skill fade">
+
+        <span class="skill-number">
+          04
+        </span>
+
+        <span class="skill-name">
+          Mobile Applications
+        </span>
+
+      </div>
+
+
+      <div class="skill fade">
+
+        <span class="skill-number">
+          05
+        </span>
+
+        <span class="skill-name">
+          UI / UX Implementation
+        </span>
+
+      </div>
+
+
+      <div class="skill fade">
+
+        <span class="skill-number">
+          06
+        </span>
+
+        <span class="skill-name">
+          API & System Architecture
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       CONTACT
+  ====================================================== -->
+
+  <section id="contact" class="contact">
+
+    <div class="contact-inner fade">
+
+      <div class="contact-label">
+        Have something in mind?
+      </div>
+
+
+      <h2>
+
+        Let's build
+        <br>
+
+        <span>
+          something.
+        </span>
+
+      </h2>
+
+
+      <a
+        href="mailto:hello@sujalshrestha.com"
+        class="contact-email"
+      >
+
+        hello@sujalshrestha.com
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
        FOOTER
-  ========================== -->
+  ====================================================== -->
 
   <footer>
 
-    <div class="footer-container">
+    <div class="footer-inner">
 
-      <div class="copyright">
-        © 2026 Sujal Shrestha. Built with curiosity.
-      </div>
+      <p>
+        © 2026 Sujal Shrestha
+      </p>
 
-      <div class="socials">
+
+      <div class="footer-socials">
 
         <a
           href="https://github.com/Sujal-Shrestha7"
@@ -1658,7 +1769,7 @@
         </a>
 
         <a
-          href="https://www.linkedin.com"
+          href="https://linkedin.com"
           target="_blank"
         >
           LinkedIn
@@ -1673,6 +1784,118 @@
     </div>
 
   </footer>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+    /* ============================
+       NAVBAR SCROLL
+    ============================ */
+
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+      } else {
+
+        navbar.classList.remove("scrolled");
+
+      }
+
+    });
+
+
+    /* ============================
+       CUSTOM CURSOR
+    ============================ */
+
+    const cursor = document.querySelector(".cursor");
+
+    document.addEventListener("mousemove", (event) => {
+
+      cursor.style.left = event.clientX + "px";
+
+      cursor.style.top = event.clientY + "px";
+
+    });
+
+
+    /* ============================
+       SCROLL REVEAL
+    ============================ */
+
+    const observer = new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+    document
+      .querySelectorAll(".fade")
+      .forEach((element) => {
+
+        observer.observe(element);
+
+      });
+
+
+    /* ============================
+       MAGNETIC CONTACT BUTTON
+    ============================ */
+
+    const contactButton =
+      document.querySelector(".contact-email");
+
+    contactButton.addEventListener("mousemove", (event) => {
+
+      const rect =
+        contactButton.getBoundingClientRect();
+
+      const x =
+        event.clientX - rect.left - rect.width / 2;
+
+      const y =
+        event.clientY - rect.top - rect.height / 2;
+
+      contactButton.style.transform =
+        `translate(${x * 0.12}px, ${y * 0.12}px)`;
+
+    });
+
+
+    contactButton.addEventListener("mouseleave", () => {
+
+      contactButton.style.transform =
+        "translate(0,0)";
+
+    });
+
+  </script>
 
 </body>
 </html>
